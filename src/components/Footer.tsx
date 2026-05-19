@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Mail } from 'lucide-react'
 
 export default function Footer() {
@@ -6,14 +7,14 @@ export default function Footer() {
   return (
     <footer className="border-t border-slate-200 dark:border-white/5 bg-bg-dark py-12 relative z-10">
       <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-        <a
-          href="#hero"
+        <Link
+          to="/"
           className="font-head font-bold text-lg text-slate-900 dark:text-white flex items-center gap-1 group"
         >
           <span className="text-purple-primary group-hover:translate-x-[-2px] transition-transform">&lt;</span>
           <span>MAJ</span>
           <span className="text-purple-primary group-hover:translate-x-[2px] transition-transform">/&gt;</span>
-        </a>
+        </Link>
 
         <p className="text-xs text-slate-500 dark:text-slate-400 md:order-none order-last">
           &copy; {currentYear} Muhammad Ali Joya. Built with ❤️ using React &amp; Tailwind CSS.

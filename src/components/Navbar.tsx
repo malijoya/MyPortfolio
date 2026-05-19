@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link, NavLink } from 'react-router-dom'
 import { Menu, X, Sun, Moon, ArrowUpRight } from 'lucide-react'
 
 interface NavbarProps {
@@ -9,30 +10,10 @@ interface NavbarProps {
 export default function Navbar({ theme, toggleTheme }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [activeSection, setActiveSection] = useState('hero')
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
-
-      // Section spy
-      const sections = ['about', 'skills', 'projects', 'experience', 'education', 'certifications', 'contact']
-      const scrollPosition = window.scrollY + 100
-
-      for (const section of sections) {
-        const el = document.getElementById(section)
-        if (el) {
-          const top = el.offsetTop
-          const height = el.offsetHeight
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(section)
-            break
-          }
-        }
-      }
-      if (window.scrollY < 100) {
-        setActiveSection('hero')
-      }
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -40,13 +21,11 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
   }, [])
 
   const navItems = [
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Education', href: '#education' },
-    { name: 'Certifications', href: '#certifications' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
+    { name: 'Projects', href: '/projects' },
+    { name: 'Experience', href: '/experience' },
+    { name: 'Contact', href: '/contact' },
   ]
 
   return (
@@ -58,29 +37,31 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-        <a
-          href="#hero"
+        <Link
+          to="/"
           className="font-head font-bold text-xl tracking-tight text-slate-900 dark:text-white flex items-center gap-1 group"
         >
           <span className="text-purple-primary group-hover:translate-x-[-2px] transition-transform">&lt;</span>
           <span>MAJ</span>
           <span className="text-purple-primary group-hover:translate-x-[2px] transition-transform">/&gt;</span>
-        </a>
+        </Link>
 
         {/* Desktop nav links */}
         <div className="hidden md:flex items-center gap-1">
           {navItems.map((item) => (
-            <a
+            <NavLink
               key={item.name}
-              href={item.href}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 ${
-                activeSection === item.href.slice(1)
-                  ? 'text-purple-primary dark:text-purple-light bg-slate-100 dark:bg-white/5'
-                  : 'text-slate-600 dark:text-slate-400'
-              }`}
+              to={item.href}
+              className={({ isActive }) =>
+                `px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 ${
+                  isActive
+                    ? 'text-purple-primary dark:text-purple-light bg-slate-100 dark:bg-white/5'
+                    : 'text-slate-600 dark:text-slate-400'
+                }`
+              }
             >
               {item.name}
-            </a>
+            </NavLink>
           ))}
         </div>
 
@@ -129,14 +110,20 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
         }`}
       >
         {navItems.map((item) => (
-          <a
+          <NavLink
             key={item.name}
-            href={item.href}
+            to={item.href}
             onClick={() => setIsOpen(false)}
-            className="text-2xl font-bold text-slate-800 dark:text-slate-300 hover:text-purple-primary dark:hover:text-purple-light transition-all"
+            className={({ isActive }) =>
+              `text-2xl font-bold transition-all ${
+                isActive
+                  ? 'text-purple-primary dark:text-purple-light'
+                  : 'text-slate-800 dark:text-slate-300 hover:text-purple-primary dark:hover:text-purple-light'
+              }`
+            }
           >
             {item.name}
-          </a>
+          </NavLink>
         ))}
         <a
           href="#resume"
