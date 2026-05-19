@@ -63,7 +63,7 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
           className="font-head font-bold text-xl tracking-tight text-slate-900 dark:text-white flex items-center gap-1 group"
         >
           <span className="text-purple-primary group-hover:translate-x-[-2px] transition-transform">&lt;</span>
-          <span>ALJ</span>
+          <span>MAJ</span>
           <span className="text-purple-primary group-hover:translate-x-[2px] transition-transform">/&gt;</span>
         </a>
 
