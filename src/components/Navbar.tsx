@@ -25,15 +25,16 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
     { name: 'About', href: '/about' },
     { name: 'Projects', href: '/projects' },
     { name: 'Experience', href: '/experience' },
+    { name: 'Certifications', href: '/certifications' },
     { name: 'Contact', href: '/contact' },
   ]
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 py-4 transition-[background-color,backdrop-filter,border-color,box-shadow] duration-300 ${
         scrolled
-          ? 'bg-white/85 dark:bg-bg-dark/85 backdrop-blur-md border-b border-slate-200 dark:border-white/5 shadow-lg py-4'
-          : 'bg-transparent py-6'
+          ? 'bg-white/85 dark:bg-bg-dark/85 backdrop-blur-md border-b border-slate-200 dark:border-white/5 shadow-lg'
+          : 'bg-transparent border-b border-transparent'
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">

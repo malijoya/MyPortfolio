@@ -19,19 +19,19 @@ export default function Home() {
                 <BookOpen size={14} /> About Me
               </div>
               <h2 className="font-head text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mb-6">
-                Developer &amp; Technologist
+                Web Developer 
               </h2>
               <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
-                I'm Muhammad Ali Joya, a passionate Full Stack Developer focused on building clean, performant, and premium digital experiences. I hold a BS in Information Technology and specialize in React, Python, and mobile technologies.
+                I'm Muhammad Ali Joya, a passionate Full Stack Developer focused on building clean, performant, and premium digital experiences. I hold a BS in Information Technology and specialize in React, Next, Three.js and mobile technologies.
               </p>
               <p className="text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
-                My education includes detailed training in system architectures, software engineering, and machine learning models.
+                My education includes detailed training in system architectures, software engineering, and devOps practices.
               </p>
               <Link
                 to="/about"
                 className="inline-flex items-center gap-2 text-sm font-bold text-purple-primary dark:text-purple-light hover:gap-3 transition-all"
               >
-                Read Bio, Skills &amp; Education <ArrowRight size={16} />
+                Read About Me <ArrowRight size={16} />
               </Link>
             </div>
             
@@ -41,7 +41,7 @@ export default function Home() {
                 Core Stack Highlights
               </h3>
               <div className="flex flex-wrap gap-2">
-                {['React', 'TypeScript', 'Node.js', 'Python', 'Flask', 'Tailwind CSS', 'Flutter', 'Firebase'].map((skill) => (
+                {['React', 'TypeScript', 'Node.js', 'Next.js', 'Three.js', 'Tailwind CSS', 'MongoDb', 'Firebase', 'Microsoft 365'].map((skill) => (
                   <span
                     key={skill}
                     className="px-3 py-1.5 rounded-lg border border-purple-primary/15 bg-purple-primary/5 text-xs font-semibold text-slate-800 dark:text-slate-200"
@@ -154,7 +154,7 @@ export default function Home() {
                   Freelance / Remote
                 </span>
                 <p className="text-slate-600 dark:text-slate-400 text-sm mt-3 leading-relaxed">
-                  Building custom web and mobile applications with Python, Node.js, and React. Designing robust backends and clean frontends.
+                  Building custom web and mobile applications with React.js, Next.js, Three.js, Node.js, and Kotlin. Designing robust backends and clean frontends.
                 </p>
               </div>
               <Link

@@ -13,17 +13,17 @@ interface Project {
 }
 
 export default function Projects() {
-  const [filter, setFilter] = useState<'all' | 'web' | 'mobile' | 'ai'>('all')
+  const [filter, setFilter] = useState<'all' | 'web' | 'mobile' | 'microsoft' | 'system'>('all')
 
   const projectsList: Project[] = [
     {
       id: 'phishalert',
       title: 'PhishAlert',
       desc: 'A real‑time URL phishing detection mobile application powered by machine learning risk scoring and Firebase community sharing.',
-      category: ['mobile', 'ai'],
+      category: ['mobile'],
       tags: ['Flutter', 'Python', 'Flask', 'Machine Learning'],
       demoUrl: '#',
-      codeUrl: 'https://github.com',
+      codeUrl: 'https://github.com/malijoya/',
       emoji: '🛡️',
     },
     {
@@ -33,7 +33,7 @@ export default function Projects() {
       category: ['web'],
       tags: ['HTML5', 'CSS3', 'JavaScript', 'Interactive UI'],
       demoUrl: '#',
-      codeUrl: 'https://github.com',
+      codeUrl: 'https://github.com/malijoya/',
       emoji: '🍽️',
     },
     {
@@ -43,8 +43,28 @@ export default function Projects() {
       category: ['web'],
       tags: ['React', 'Node.js', 'Web3', 'Tailwind CSS'],
       demoUrl: '#',
-      codeUrl: 'https://github.com',
+      codeUrl: 'https://github.com/malijoya/',
       emoji: '📊',
+    },
+    {
+      id: 'microsoft-365',
+      title: 'Microsoft 365 Integration',
+      desc: 'Productivity workspace integrating Microsoft 365 services — Outlook, Teams, SharePoint, and OneDrive — through Microsoft Graph APIs for unified collaboration.',
+      category: ['microsoft'],
+      tags: ['Microsoft 365', 'Graph API', 'Azure AD', 'TypeScript'],
+      demoUrl: '#',
+      codeUrl: 'https://github.com/malijoya/',
+      emoji: '🗂️',
+    },
+    {
+      id: 'system-design',
+      title: 'System Design Case Studies',
+      desc: 'A curated collection of scalable system design blueprints covering load balancing, caching, sharding, and microservices for high‑traffic platforms.',
+      category: ['system'],
+      tags: ['System Design', 'Architecture', 'Microservices', 'Scalability'],
+      demoUrl: '#',
+      codeUrl: 'https://github.com/malijoya/',
+      emoji: '🧠',
     },
   ]
 
@@ -53,11 +73,12 @@ export default function Projects() {
       ? projectsList
       : projectsList.filter((proj) => proj.category.includes(filter))
 
-  const filterTabs: { label: string; value: 'all' | 'web' | 'mobile' | 'ai' }[] = [
+  const filterTabs: { label: string; value: 'all' | 'web' | 'mobile' | 'microsoft' | 'system' }[] = [
     { label: 'All', value: 'all' },
     { label: 'Web Apps', value: 'web' },
     { label: 'Mobile Apps', value: 'mobile' },
-    { label: 'AI / ML', value: 'ai' },
+    { label: 'Microsoft 365', value: 'microsoft' },
+    { label: 'System Design', value: 'system' },
   ]
 
   return (
@@ -152,7 +173,7 @@ export default function Projects() {
         {/* Global CTA */}
         <div className="text-center">
           <a
-            href="https://github.com"
+            href="https://github.com/malijoya/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 border border-slate-200 dark:border-white/10 hover:border-purple-primary/50 text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white font-semibold px-8 py-3.5 rounded-xl hover:-translate-y-0.5 transition-all bg-slate-100 dark:bg-white/5"

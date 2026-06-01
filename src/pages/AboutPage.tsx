@@ -1,7 +1,6 @@
 import About from '../components/About'
 import Skills from '../components/Skills'
 import Education from '../components/Education'
-import Certifications from '../components/Certifications'
 
 export default function AboutPage() {
   return (
@@ -9,7 +8,6 @@ export default function AboutPage() {
       <About />
       <Skills />
       <Education />
-      <Certifications />
     </div>
   )
 }

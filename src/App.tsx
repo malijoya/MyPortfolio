@@ -8,6 +8,7 @@ import AboutPage from './pages/AboutPage'
 import ProjectsPage from './pages/ProjectsPage'
 import ExperiencePage from './pages/ExperiencePage'
 import ContactPage from './pages/ContactPage'
+import CertificationsPage from './pages/CertificationsPage'
 
 export default function App() {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
@@ -73,6 +74,7 @@ export default function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/experience" element={<ExperiencePage />} />
+            <Route path="/certifications" element={<CertificationsPage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </main>

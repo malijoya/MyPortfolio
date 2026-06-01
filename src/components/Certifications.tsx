@@ -1,35 +1,28 @@
-import { Award, ExternalLink } from 'lucide-react'
+import { Award, Download } from 'lucide-react'
 
 interface CertificationItem {
   id: string
   title: string
   issuer: string
   date: string
-  credentialUrl?: string
+  credentialFile?: string
 }
 
 export default function Certifications() {
   const certificationsList: CertificationItem[] = [
     {
       id: 'cert-1',
-      title: 'Meta Front-End Developer Professional Certificate',
-      issuer: 'Coursera / Meta',
-      date: 'Dec 2024',
-      credentialUrl: '#',
+      title: 'Scrum Fundamentals Certified (SFC)',
+      issuer: 'SCRUMstudy',
+      date: '2024',
+      credentialFile: 'MuhammadAliJoya-1085049 Scrum Fundamental Course.pdf',
     },
     {
       id: 'cert-2',
-      title: 'Python for Data Science and Machine Learning',
-      issuer: 'Udemy / Kaggle',
-      date: 'Aug 2024',
-      credentialUrl: '#',
-    },
-    {
-      id: 'cert-3',
-      title: 'Google Cloud Digital Leader',
-      issuer: 'Google Cloud',
-      date: 'May 2024',
-      credentialUrl: '#',
+      title: 'Cisco Networking Certificate',
+      issuer: 'Cisco',
+      date: '2024',
+      credentialFile: 'Cisco Certificate.pdf',
     },
   ]
 
@@ -74,15 +67,14 @@ export default function Certifications() {
                 </p>
               </div>
 
-              {cert.credentialUrl && (
+              {cert.credentialFile && (
                 <div className="mt-8 pt-4 border-t border-slate-200 dark:border-white/5">
                   <a
-                    href={cert.credentialUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={`${import.meta.env.BASE_URL}certificates/${encodeURIComponent(cert.credentialFile)}`}
+                    download={cert.credentialFile}
                     className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-primary dark:text-purple-light hover:underline uppercase tracking-wider"
                   >
-                    View Credential <ExternalLink size={12} />
+                    View Credential <Download size={12} />
                   </a>
                 </div>
               )}

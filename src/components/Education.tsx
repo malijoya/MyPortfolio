@@ -30,7 +30,7 @@ export default function Education() {
       date: '2017 — 2019',
       degree: 'Matriculation (Computer Science)',
       institution: 'Fauji Foundation College for Boys, New Lalazar, Rawalpindi',
-      details: 'High school education with major subjects in Science and Computer studies.',
+      details: 'High school education with major subjects in Science and Biology.',
       score: 'Marks: 880 / 1100 (80%)',
     },
   ]
