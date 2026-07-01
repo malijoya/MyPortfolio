@@ -1,4 +1,13 @@
-import ModelViewer from './ModelViewer'
+import { lazy, Suspense } from 'react'
+const ModelViewer = lazy(() => import('./ModelViewer'))
+
+function ModelLoader() {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center text-xs text-slate-500 dark:text-slate-400 animate-pulse">
+      Loading 3D model…
+    </div>
+  )
+}
 
 export default function About() {
   const stats = [
@@ -24,10 +33,12 @@ export default function About() {
             <div className="w-full h-full rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-100/50 dark:bg-white/5 overflow-hidden relative">
               {/* Decorative grid pattern */}
               <div className="absolute inset-0 opacity-10 dark:opacity-10 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none" />
-              <ModelViewer
-                url={`${import.meta.env.BASE_URL}models/muhammad_ali_joya.glb`}
-                className="absolute inset-0"
-              />
+              <Suspense fallback={<ModelLoader />}>
+                <ModelViewer
+                  url={`${import.meta.env.BASE_URL}models/muhammad_ali_joya.glb`}
+                  className="absolute inset-0"
+                />
+              </Suspense>
               <div className="absolute bottom-0 left-0 right-0 p-4 text-center bg-gradient-to-t from-slate-100/90 dark:from-bg-dark-2/90 to-transparent pointer-events-none">
                 <h3 className="text-slate-900 dark:text-white font-semibold text-sm">Muhammad Ali Joya</h3>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Full Stack Developer</p>

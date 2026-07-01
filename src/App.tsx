@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { HashRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -12,7 +12,7 @@ import CertificationsPage from './pages/CertificationsPage'
 
 export default function App() {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const glowRef = useRef<HTMLDivElement>(null)
 
   // Initialize theme based on preference
   useEffect(() => {
@@ -31,37 +31,39 @@ export default function App() {
     }
   }, [])
 
-  const toggleTheme = () => {
-    const nextTheme = theme === 'dark' ? 'light' : 'dark'
-    setTheme(nextTheme)
-    localStorage.setItem('theme', nextTheme)
-    if (nextTheme === 'dark') {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-  }
+  const toggleTheme = useCallback(() => {
+    setTheme((prev) => {
+      const nextTheme = prev === 'dark' ? 'light' : 'dark'
+      localStorage.setItem('theme', nextTheme)
+      if (nextTheme === 'dark') {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
+      return nextTheme
+    })
+  }, [])
 
-  // Cursor glow tracker
+  // Cursor glow tracker — direct DOM mutation, zero re-renders
   useEffect(() => {
-    const updateMousePos = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
+    const el = glowRef.current
+    if (!el) return
+    const onMove = (e: MouseEvent) => {
+      el.style.transform = `translate(${e.clientX - 200}px, ${e.clientY - 200}px)`
     }
-    window.addEventListener('mousemove', updateMousePos)
-    return () => window.removeEventListener('mousemove', updateMousePos)
+    window.addEventListener('mousemove', onMove, { passive: true })
+    return () => window.removeEventListener('mousemove', onMove)
   }, [])
 
   return (
     <HashRouter>
       <ScrollToTop />
       <div className="min-h-screen bg-bg-dark text-text-primary relative transition-colors duration-300">
-        {/* Dynamic Cursor Glow Shadow */}
+        {/* Dynamic Cursor Glow Shadow — positioned via ref, not state */}
         <div
-          className="fixed pointer-events-none z-50 w-[400px] h-[400px] rounded-full bg-radial from-purple-primary/10 to-transparent -translate-x-1/2 -translate-y-1/2 hidden md:block"
-          style={{
-            left: `${mousePosition.x}px`,
-            top: `${mousePosition.y}px`,
-          }}
+          ref={glowRef}
+          className="fixed pointer-events-none z-50 w-[400px] h-[400px] rounded-full bg-radial from-purple-primary/10 to-transparent hidden md:block will-change-transform"
+          style={{ top: 0, left: 0, transform: 'translate(-200px, -200px)' }}
         />
 
         {/* Navigation */}

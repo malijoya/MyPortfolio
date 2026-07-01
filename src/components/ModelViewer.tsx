@@ -1,6 +1,6 @@
 import { Suspense, useRef } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
-import { OrbitControls, useGLTF, Environment, ContactShadows, Html } from '@react-three/drei'
+import { Canvas } from '@react-three/fiber'
+import { OrbitControls, useGLTF, Html } from '@react-three/drei'
 import type { Group } from 'three'
 
 interface ModelProps {
@@ -10,7 +10,6 @@ interface ModelProps {
 function Model({ url }: ModelProps) {
   const ref = useRef<Group>(null)
   const { scene } = useGLTF(url)
-
 
   return <primitive ref={ref} object={scene} scale={1.6} position={[0, -0.6, 0]} />
 }
@@ -35,22 +34,16 @@ export default function ModelViewer({ url, className }: ModelViewerProps) {
     <div className={className}>
       <Canvas
         camera={{ position: [0, 0.2, 3.2], fov: 35 }}
-        dpr={[1, 2]}
-        gl={{ antialias: true, alpha: true }}
+        dpr={[1, 1.5]}
+        gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
+        frameloop="demand"
       >
-        <ambientLight intensity={0.6} />
-        <directionalLight position={[3, 5, 2]} intensity={1.2} />
-        <directionalLight position={[-3, 2, -2]} intensity={0.4} color="#a78bfa" />
+        <ambientLight intensity={0.8} />
+        <directionalLight position={[3, 5, 2]} intensity={1.4} />
+        <directionalLight position={[-3, 2, -2]} intensity={0.5} color="#a78bfa" />
+        <hemisphereLight intensity={0.3} groundColor="#0a0a0f" />
         <Suspense fallback={<Loader />}>
           <Model url={url} />
-          <ContactShadows
-            position={[0, -1.4, 0]}
-            opacity={0.45}
-            scale={6}
-            blur={2.4}
-            far={3}
-          />
-          <Environment preset="city" />
         </Suspense>
         <OrbitControls
           enablePan={false}
@@ -62,5 +55,3 @@ export default function ModelViewer({ url, className }: ModelViewerProps) {
     </div>
   )
 }
-
-useGLTF.preload(`${import.meta.env.BASE_URL}models/muhammad_ali_joya.glb`)

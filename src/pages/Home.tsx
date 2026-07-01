@@ -58,7 +58,7 @@ export default function Home() {
                   </div>
                   <div className="w-[1px] h-8 bg-slate-200 dark:bg-white/10" />
                   <div>
-                    <span className="block text-2xl font-bold text-slate-900 dark:text-white">20+</span>
+                    <span className="block text-2xl font-bold text-slate-900 dark:text-white">10+</span>
                     <span className="text-[10px] text-slate-500 uppercase font-bold">Completed Projects</span>
                   </div>
                 </div>

@@ -5,7 +5,7 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    purpose: 'I want to hire you',
+    purpose: 'I\'d like to hire you',
     subject: '',
     message: '',
   })
@@ -26,7 +26,7 @@ export default function Contact() {
           Accept: "application/json"
         },
         body: JSON.stringify({
-          access_key: "baa804ec-e524-4aee-9cc2-fb0270977752",
+          access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
           name: formData.name,
           email: formData.email,
           purpose: formData.purpose,
@@ -40,7 +40,7 @@ export default function Contact() {
 
       if (data.success) {
         setSuccess(true)
-        setFormData({ name: '', email: '', purpose: 'I want to hire you', subject: '', message: '' })
+        setFormData({ name: '', email: '', purpose: 'I\'d like to hire you', subject: '', message: '' })
         // Reset success state after 5 seconds
         setTimeout(() => setSuccess(false), 5000)
       } else {
@@ -173,7 +173,7 @@ export default function Contact() {
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500 dark:text-slate-400">
                   <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                    <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
                   </svg>
                 </div>
               </div>
