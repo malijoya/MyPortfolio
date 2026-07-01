@@ -77,7 +77,8 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
           </button>
           
           <a
-            href="#resume"
+            href={`${import.meta.env.BASE_URL}resume/Muhammad_Ali_Joya.pdf`}
+            download="Muhammad_Ali_Joya.pdf"
             className="inline-flex items-center gap-1 text-sm font-semibold border border-purple-primary text-purple-primary dark:text-purple-light hover:bg-purple-primary/10 px-4 py-2 rounded-lg transition-all"
           >
             Resume <ArrowUpRight size={14} />
@@ -127,7 +128,8 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
           </NavLink>
         ))}
         <a
-          href="#resume"
+          href={`${import.meta.env.BASE_URL}resume/Muhammad_Ali_Joya.pdf`}
+          download="Muhammad_Ali_Joya.pdf"
           onClick={() => setIsOpen(false)}
           className="px-8 py-3 rounded-lg border border-purple-primary text-purple-primary dark:text-purple-light text-lg font-semibold hover:bg-purple-primary/10 transition-all"
         >
