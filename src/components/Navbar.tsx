@@ -42,9 +42,9 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
           to="/"
           className="font-head font-bold text-xl tracking-tight text-slate-900 dark:text-white flex items-center gap-1 group"
         >
-          <span className="text-purple-primary group-hover:translate-x-[-2px] transition-transform">&lt;</span>
+          <span className="text-cyan-primary dark:text-cyan-400 group-hover:translate-x-[-2px] transition-transform">&lt;</span>
           <span>MAJ</span>
-          <span className="text-purple-primary group-hover:translate-x-[2px] transition-transform">/&gt;</span>
+          <span className="text-cyan-primary dark:text-cyan-400 group-hover:translate-x-[2px] transition-transform">/&gt;</span>
         </Link>
 
         {/* Desktop nav links */}
@@ -56,7 +56,7 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
               className={({ isActive }) =>
                 `px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 ${
                   isActive
-                    ? 'text-purple-primary dark:text-purple-light bg-slate-100 dark:bg-white/5'
+                    ? 'text-cyan-primary dark:text-cyan-400 bg-slate-100 dark:bg-white/5 font-semibold'
                     : 'text-slate-600 dark:text-slate-400'
                 }`
               }
@@ -70,16 +70,16 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
         <div className="hidden md:flex items-center gap-4">
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-full border border-slate-200 dark:border-white/10 hover:border-purple-primary/50 text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white transition-all cursor-pointer"
+            className="p-2 rounded-full border border-slate-200 dark:border-white/10 hover:border-cyan-primary/50 text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white transition-all cursor-pointer"
             aria-label="Toggle theme"
           >
             {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
           </button>
           
           <a
-            href={`${import.meta.env.BASE_URL}resume/Muhammad_Ali_Joya.pdf`}
-            download="Muhammad_Ali_Joya.pdf"
-            className="inline-flex items-center gap-1 text-sm font-semibold border border-purple-primary text-purple-primary dark:text-purple-light hover:bg-purple-primary/10 px-4 py-2 rounded-lg transition-all"
+            href={`${import.meta.env.BASE_URL}resume/Muhammad_Ali_Joya_FullStack.pdf`}
+            download="Muhammad_Ali_Joya_FullStack.pdf"
+            className="inline-flex items-center gap-1 text-sm font-semibold border border-cyan-primary text-cyan-primary dark:text-cyan-400 hover:bg-cyan-primary/10 px-4 py-2 rounded-lg transition-all"
           >
             Resume <ArrowUpRight size={14} />
           </a>
@@ -119,8 +119,8 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
             className={({ isActive }) =>
               `text-2xl font-bold transition-all ${
                 isActive
-                  ? 'text-purple-primary dark:text-purple-light'
-                  : 'text-slate-800 dark:text-slate-300 hover:text-purple-primary dark:hover:text-purple-light'
+                  ? 'text-cyan-primary dark:text-cyan-400'
+                  : 'text-slate-800 dark:text-slate-300 hover:text-cyan-primary dark:hover:text-cyan-400'
               }`
             }
           >
@@ -128,10 +128,10 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
           </NavLink>
         ))}
         <a
-          href={`${import.meta.env.BASE_URL}resume/Muhammad_Ali_Joya.pdf`}
-          download="Muhammad_Ali_Joya.pdf"
+          href={`${import.meta.env.BASE_URL}resume/Muhammad_Ali_Joya_FullStack.pdf`}
+          download="Muhammad_Ali_Joya_FullStack.pdf"
           onClick={() => setIsOpen(false)}
-          className="px-8 py-3 rounded-lg border border-purple-primary text-purple-primary dark:text-purple-light text-lg font-semibold hover:bg-purple-primary/10 transition-all"
+          className="px-8 py-3 rounded-lg border border-cyan-primary text-cyan-primary dark:text-cyan-400 text-lg font-semibold hover:bg-cyan-primary/10 transition-all"
         >
           Download Resume
         </a>
@@ -139,3 +139,4 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
     </nav>
   )
 }
+
